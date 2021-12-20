@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card my-5">
+    <div class="card-body">
+        <div class="content-section">
+            <form action="" method="post">
+                {{form.hidden_tag()}}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">{{ legend }}</legend>
+                    <div class="form-group">
+                        <strong>{{form.title.label(class='form-control-label')}}</strong>
+                        {% if form.title.errors %}
+                            {{form.title(class='form-control form-control-lg is-invalid')}}
+                            {% for error in form.title.errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        {% else %}
+                            {{form.title(class='form-control form-control-lg')}}
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <strong>{{form.content.label(class='form-control-label')}}</strong>
+                        {% if form.content.errors %}
+                            {{form.content(class='form-control form-control-lg is-invalid')}}
+                            {% for error in form.content.errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        {% else %}
+                            {{form.content(class='form-control form-control-lg')}}
+                        {% endif %}
+                    </div>
+
+                </fieldset>
+                <div class="from-group">
+                    {{form.submit( class='btn btn-outline-info my-2')}}
+                </div>
+            </form>
+        </div> 
+    </div>
+</div>
+{% endblock content %}

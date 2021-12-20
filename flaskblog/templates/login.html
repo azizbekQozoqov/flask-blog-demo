@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="card my-5">
+        <div class="card-body">
+            <div class="content-section">
+                <form action="" method="post">
+                    {{form.hidden_tag()}}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Log In</legend>
+                        <div class="form-group">
+                            {{form.email.label(class='form-control-label')}}
+                            {% if form.email.errors %}
+                                {{form.email(class='form-control form-control-lg is-invalid')}}
+                                {% for error in form.email.errors %}
+                                    <span>{{error}}</span>
+                                {% endfor %}
+                            {% else %}
+                                {{form.email(class='form-control form-control-lg')}}
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            {{form.password.label(class='form-control-label')}}
+                            {% if form.password.errors %}
+                                {{form.password(class='form-control form-control-lg is-invalid')}}
+                                {% for error in form.password.errors %}
+                                    <span>{{error}}</span>
+                                {% endfor %}
+                            {% else %}
+                                {{form.password(class='form-control form-control-lg')}}
+                            {% endif %}
+                        </div>
+                        <div class='form-check'>
+                            {{form.remember(class='form-check-input')}}
+                            {{form.remember.label(class='form-check-label')}}
+                        </div>
+                    </fieldset>
+                    <div class="from-group">
+                        {{form.submit( class='btn btn-outline-info my-2')}}
+                    </div>
+                    <div class="text-muted ml-2">
+                        <a href="{{ url_for('reset_request') }}">Forgot password?</a>
+                    </div>
+                </form>
+            </div> 
+        </div>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Have not an account? <a href="{{url_for('register')}}" class="ml-2">Sign Up</a>
+        </small>
+    </div>
+{% endblock content %}

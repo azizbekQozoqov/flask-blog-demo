@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="card my-5">
+        <div class="card-body">
+            <div class="content-section">
+                <form action="" method="post">
+                    {{form.hidden_tag()}}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Reset Password</legend>
+                        <div class="form-group">
+                            {{form.email.label(class='form-control-label')}}
+                            {% if form.email.errors %}
+                                {{form.email(class='form-control form-control-lg is-invalid')}}
+                                {% for error in form.email.errors %}
+                                    <span>{{error}}</span>
+                                {% endfor %}
+                            {% else %}
+                                {{form.email(class='form-control form-control-lg')}}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="from-group">
+                        {{form.submit( class='btn btn-outline-info my-2')}}
+                    </div>
+                </form>
+            </div> 
+        </div>
+    </div>
+{% endblock content %}
